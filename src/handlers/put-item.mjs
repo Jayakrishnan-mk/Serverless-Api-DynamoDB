@@ -16,8 +16,6 @@ export const putItemHandler = async (event) => {
     if (event.httpMethod !== 'POST') {
         throw new Error(`postMethod only accepts POST method, you tried: ${event.httpMethod} method.`);
     }
-    // All log statements are written to CloudWatch
-    console.info('received:', event);
 
     // Get id and name from the body of the request
     const body = JSON.parse(event.body);
@@ -32,8 +30,7 @@ export const putItemHandler = async (event) => {
     };
 
     try {
-        const data = await ddbDocClient.send(new PutCommand(params));
-        console.log("Success - item added or updated", data);
+        await ddbDocClient.send(new PutCommand(params));
       } catch (err) {
         console.log("Error", err.stack);
       }
@@ -43,7 +40,5 @@ export const putItemHandler = async (event) => {
         body: JSON.stringify(body)
     };
 
-    // All log statements are written to CloudWatch
-    console.info(`response from: ${event.path} statusCode: ${response.statusCode} body: ${response.body}`);
     return response;
 };

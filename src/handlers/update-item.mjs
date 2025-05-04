@@ -5,7 +5,6 @@ const client = new DynamoDBClient({});
 const tableName = process.env.SAMPLE_TABLE;
 
 export const updateItemHandler = async (event) => {
-    console.log('received:', event);
 
     try {
         const { id, name } = JSON.parse(event.body);
@@ -26,9 +25,7 @@ export const updateItemHandler = async (event) => {
             ReturnValues: 'ALL_NEW',
         });
 
-        const result = await client.send(command);
-
-        console.log('Update success:', result);
+        await client.send(command);
 
         return {
             statusCode: 200,
