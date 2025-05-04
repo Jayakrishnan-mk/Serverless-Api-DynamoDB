@@ -16,7 +16,6 @@ export const updateItemHandler = async (event) => {
                 body: JSON.stringify({ message: 'Missing id or name' }),
             };
         }
-        console.log("Table name from env:", process.env.SAMPLE_TABLE);
 
         const command = new UpdateItemCommand({
             TableName: tableName,
