@@ -1,4 +1,4 @@
-# CRUD DynamoDB Serverless App.
+# CRUD DynamoDB Serverless App
 
 This project is a complete Serverless CRUD API built using **AWS SAM (Serverless Application Model)**, **Node.js**, and **DynamoDB**. It's designed for learning and demo purposes, showcasing how to build, test, and deploy a serverless backend on AWS.
 
